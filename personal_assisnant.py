@@ -183,4 +183,109 @@ class Calculator:
             result = eval(expression)
             print(f"Результат: {result}")
         except Exception as e:
-            print(f"Ошибка вычисления: {e}")    
+            print(f"Ошибка вычисления: {e}")
+# Меню
+def main_menu():
+    while True:
+        print("\n Добро пожаловать в Персональный помощник!")
+        print("1. Управление заметками")
+        print("2 Управление задачами")
+        print("3. Управление контактами")
+        print("4. Управление финансами")
+        print("5. Калькулятор")
+        print("6. Выход")
+        choice = input("Выберите действие: ")
+        if choice == "1":
+            notes_menu()
+        elif choice == "2":
+            tasks_menu()
+        elif choice == "3":
+            contacts_menu()
+        elif choice == "4":
+            finance_menu()
+        elif choice == "5":
+            Calculator.calculate()
+        elif choice == "6":
+            print("Выход из приложения.")
+            break
+        else:
+            print("Некорректный выбор. Попробуйте снова")
+def notes_menu():
+    while True:
+        print("\n Управление заметками:")
+        print("1. Добавить заметку")
+        print("2. Посмотреть заметки")
+        print("3. Удалить заметку")
+        print("4. Экспорт заметок в CSV")
+        print("5. Назад")
+        choice = input("Выберите действие: ")
+        if choice == "1":
+            NotesManager.create_note()
+        elif choice == "2":
+            NotesManager.view_notes()
+        elif choice == "3":
+            NotesManager.delete_note()
+        elif choice == "4":
+            NotesManager.export_to_csv()
+        elif choice == "5":
+            break
+        else:
+            print("Некорректный выбор. Попробуйте снова")
+
+
+def tasks_menu():
+    while True:
+        print("\n Управление задачами:")
+        print("1. Добавить задачу")
+        print("2. Посмотреть задачи")
+        print("3. Удалить задачу")
+        print("4. Назад")
+        choice = input("Выберите действие: ")
+        if choice == "1":
+            TasksManager.create_task()
+        elif choice == "2":
+            TasksManager.view_tasks()
+        elif choice == "3":
+            TasksManager.delete_task()
+        elif choice == "4":
+            break
+        else:
+            print("Некорректный выбор. Попробуйте снова")
+
+def contacts_menu():
+    while True:
+        print("\n Управление контактами:")
+        print("1. Добавить контакт")
+        print("2. Посмотреть контакты")
+        print("3. Удалить контакт")
+        print("4. Назад")
+        choice = input("Выберите действие: ")
+        if choice == "1":
+            ContactsManager.add_contact()
+        elif choice == "2":
+            ContactsManager.view_contacts()
+        elif choice == "3":
+            ContactsManager.delete_contact()
+        elif choice == "4":
+            break
+        else:
+            print("Некорректный выбор. Попробуйте снова")
+
+def finance_menu():
+    while True:
+        print("\n Управление финансами:")
+        print("1. Добавить транзакцию")
+        print("2. Посмотреть транзакции")
+        print("3. Назад")
+        choice = input("Выберите действие: ")
+        if choice == "1":
+            FinanceManager.add_transaction()
+        elif choice == "2":
+            FinanceManager.view_transactions()
+        elif choice == "3":
+            break
+        else:
+            print("Некорректный выбор. Попробуйте снова")
+
+if __name__ == "__main__":
+    main_menu()    
