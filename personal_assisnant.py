@@ -149,4 +149,38 @@ class ContactsManager:
         contacts = load_data(Contact.FILE_PATH)
         updated_contacts = [contact for contact in contacts if str(contact['id']) != contact_id]
         save_data(Contact.FILE_PATH, updated_contacts)
-        print("Контакт удалён")    
+        print("Контакт удалён")
+# Финансовый менеджмент
+class FinanceManager:
+    FILE_PATH = 'finance.json'
+
+    @staticmethod
+    def add_transaction():
+        description = input("Введите описание транзакции: ")
+        amount = float(input("Введите сумму транзакции: "))
+        date = input("Введите дату (формат: DD-MM-YYYY): ")
+        if not validate_date(date):
+            print("Некорректная дата. Транзакция не добавлена")
+            return
+        transactions = load_data(FinanceManager.FILE_PATH)
+        transactions.append({"description": description, "amount": amount, "date": date})
+        save_data(FinanceManager.FILE_PATH, transactions)
+        print("Транзакция добавлена")
+    @staticmethod
+    def view_transactions():
+        transactions = load_data(FinanceManager.FILE_PATH)
+        if not transactions:
+            print("Нет транзакций.")
+            return
+        for transaction in transactions:
+            print(f"Описание: {transaction['description']} | Сумма: {transaction['amount']} | Дата: {transaction['date']}")
+# Кулькулятор
+class Calculator:
+    @staticmethod
+    def calculate():
+        expression = input("Введите выражение:  ")
+        try:
+            result = eval(expression)
+            print(f"Результат: {result}")
+        except Exception as e:
+            print(f"Ошибка вычисления: {e}")    
